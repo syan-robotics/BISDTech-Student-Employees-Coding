@@ -56,5 +56,5 @@ public class Emailer {
         catch (MessagingException messageException) {
             messageException.printStackTrace();
         }
-    ]
+    }
 }

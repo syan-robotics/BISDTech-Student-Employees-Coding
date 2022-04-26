@@ -33,26 +33,28 @@ public class Emailer {
         }
     );
 
-    try {
-        //creates default MimeMessage object 
-        MimeMessage message = new MimeMessage(session);
+    public void email(String recipient, String subjectContent, String textContent) {
+        try {
+            //creates default MimeMessage object 
+            MimeMessage message = new MimeMessage(session);
 
-        //sets the From: header field
-        message.setFrom(new InternetAddress(username));
+            //sets the From: header field
+            message.setFrom(new InternetAddress(username));
 
-        //sets the To: header field
-        message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+            //sets the To: header field
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
 
-        //sets the Subject: header field 
-        message.setSubject(subjectContent);
+            //sets the Subject: header field 
+            message.setSubject(subjectContent);
 
-        //sets text of the message
-        message.setText(textContent);
+            //sets text of the message
+            message.setText(textContent);
 
-        //sends message
-        Transport.send(message);
-    } 
-    catch (MessagingException messageException) {
-        messageException.printStackTrace();
-    }
+            //sends message
+            Transport.send(message);
+        } 
+        catch (MessagingException messageException) {
+            messageException.printStackTrace();
+        }
+    ]
 }

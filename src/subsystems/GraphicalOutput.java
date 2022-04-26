@@ -14,6 +14,5 @@ public class GraphicalOutput {
         testFrame.setVisible(true);
 
         //Creates Java GridBagLayout (formatting of objects in the window)
-        //WIP
     }
 }

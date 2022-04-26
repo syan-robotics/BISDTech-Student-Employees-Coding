@@ -4,7 +4,9 @@ package subsystems;
         https://mkyong.com/java/javamail-api-sending-email-via-gmail-smtp-example/
         https://www.tutorialspoint.com/java/java_sending_email.htm
         https://www.javatpoint.com/java-mail-api-tutorial 
-    Download: https://github.com/javaee/javamail/releases
+        https://www.oracle.com/java/technologies/javamail-readme.html
+    Download: 
+        https://github.com/javaee/javamail/releases
 */
 import javax.mail.*;
 import javax.mail.internet.*;

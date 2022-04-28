@@ -13,6 +13,7 @@ import javax.mail.internet.*;
 import java.util.*;
 
 public class Emailer {
+    //reads password from
     //email account information (we are not using a locally hosted email server); name WIP
     final String username = "BISDTechDepartment@gmail.com";
     final String password = "";
@@ -22,10 +23,6 @@ public class Emailer {
     String textContent;
 
     Properties prop = new Properties();
-        prop.put("mail.smtp.host", "smtp.gmail.com");
-        prop.put("mail.smtp.port", "587");
-        prop.put("mail.smtp.auth", "true");
-        prop.put("mail.smtp.starttls.enable", "true");
 
     Session session = Session.getInstance(prop, 
         new javax.mail.Authenticator() {
@@ -34,6 +31,13 @@ public class Emailer {
             }
         }
     );
+    public Emailer() {
+        prop.setProperty("mail.smtp.host", "smtp.gmail.com");
+        prop.setProperty("mail.smtp.port", "587");
+        prop.setProperty("mail.smtp.auth", "true");
+        prop.setProperty("mail.smtp.starttls.enable", "true");
+
+    }
 
     public void email(String recipient, String subjectContent, String textContent) {
         try {

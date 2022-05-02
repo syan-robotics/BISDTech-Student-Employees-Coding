@@ -17,10 +17,6 @@ public class Emailer {
     //email account information (we are not using a locally hosted email server); name WIP
     final String username = "BISDTechDepartment@gmail.com";
     final String password = "";
-    //pass in content from other subsystems such as Notifier; Notifier acts as the Runner
-    String recipient;
-    String subjectContent;
-    String textContent;
 
     Properties prop = new Properties();
 
@@ -36,7 +32,6 @@ public class Emailer {
         prop.setProperty("mail.smtp.port", "587");
         prop.setProperty("mail.smtp.auth", "true");
         prop.setProperty("mail.smtp.starttls.enable", "true");
-
     }
 
     public void email(String recipient, String subjectContent, String textContent) {

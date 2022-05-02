@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 import javax.swing.JFrame;
@@ -5,7 +6,7 @@ import javax.swing.JFrame;
 import subsystems.*;
 
 public class Controller {
-    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException, FileNotFoundException {
         //Database database = new Database();
         Emailer emailer = new Emailer();
         Notifier reminder = new Notifier(emailer);

@@ -8,40 +8,41 @@ package subsystems;
     Download: 
         https://github.com/javaee/javamail/releases
 */
-import javax.mail.*;
-import javax.mail.internet.*;
-
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.Properties;
+import java.util.Scanner;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class Emailer {
     final String username, password;
 
-    try {
-        username = new Scanner(new File("src/emailaddress.dat")).nextLine().trim();
-        password = new Scanner(new File("src/password.dat")).nextLine().trim();
-    }
-    catch (FileNotFoundException e) {
-        username = "";
-        password = "";
-    }
-    //pass in content from other subsystems such as Notifier; Notifier acts as the Runner
-    String recipient;
-    String subjectContent;
-    String textContent;
+    Properties prop;
+    Session session;
+    
+    public Emailer() throws FileNotFoundException {
+        Scanner usernameFile = new Scanner(new File("emailaddress.dat"));
+        Scanner passwordFile = new Scanner(new File("password.dat"));
+        username = usernameFile.nextLine().trim();
+        password = passwordFile.nextLine().trim();
+        usernameFile.close();
+        passwordFile.close();
 
-    Properties prop = new Properties();
-
-    Session session = Session.getInstance(prop, 
+        prop = new Properties();
+        session = Session.getInstance(prop, 
         new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);
             }
-        }
-    );
-    
-    public Emailer() {
+        });
+
         prop.setProperty("mail.smtp.host", "smtp.gmail.com");
         prop.setProperty("mail.smtp.port", "587");
         prop.setProperty("mail.smtp.auth", "true");

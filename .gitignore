@@ -20,6 +20,5 @@ Thumbs.db
 *.log
 *.dll
 *.lib
-password.dat
-emailaddress.dat
+*.dat
 *.sbr

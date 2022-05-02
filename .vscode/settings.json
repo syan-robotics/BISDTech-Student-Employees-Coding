@@ -1,6 +1,8 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "javax.mail.jar"
+        "javax.mail.jar",
+        "c:\\Users\\AustinWS43\\Downloads\\javax.mail.jar",
+        "c:\\Users\\IsaacAS34\\Downloads\\javax.mail.jar"
     ]
 }

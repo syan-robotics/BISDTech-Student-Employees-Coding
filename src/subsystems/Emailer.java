@@ -10,13 +10,26 @@ package subsystems;
 */
 import javax.mail.*;
 import javax.mail.internet.*;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Emailer {
-    //reads password from
-    //email account information (we are not using a locally hosted email server); name WIP
-    final String username = "BISDTechDepartment@gmail.com";
-    final String password = "";
+    final String username, password;
+
+    try {
+        username = new Scanner(new File("src/emailaddress.dat")).nextLine().trim();
+        password = new Scanner(new File("src/password.dat")).nextLine().trim();
+    }
+    catch (FileNotFoundException e) {
+        username = "";
+        password = "";
+    }
+    //pass in content from other subsystems such as Notifier; Notifier acts as the Runner
+    String recipient;
+    String subjectContent;
+    String textContent;
 
     Properties prop = new Properties();
 
@@ -27,6 +40,7 @@ public class Emailer {
             }
         }
     );
+    
     public Emailer() {
         prop.setProperty("mail.smtp.host", "smtp.gmail.com");
         prop.setProperty("mail.smtp.port", "587");
